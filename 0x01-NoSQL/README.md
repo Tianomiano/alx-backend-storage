@@ -21,3 +21,16 @@ Write a script that lists all documents in the collection school:
 
 The database name will be passed as option of mongo command
 
+4. All matches
+mandatory
+Write a script that lists all documents with name="Holberton school" in the collection school:
+
+The database name will be passed as option of mongo command
+
+5. Count
+mandatory
+Write a script that displays the number of documents in the collection school:
+
+The database name will be passed as option of mongo command
+
+
