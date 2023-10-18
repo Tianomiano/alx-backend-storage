@@ -6,6 +6,7 @@ from typing import Callable, Optional, Union
 
 import redis
 
+
 def count_calls(method: Callable) -> Callable:
     """
     a system to count how many times,
@@ -21,6 +22,7 @@ def count_calls(method: Callable) -> Callable:
         return method(self, *args, **kwargs)
 
     return wrapper
+
 
 def call_history(method: Callable) -> Callable:
     """
@@ -39,6 +41,7 @@ def call_history(method: Callable) -> Callable:
 
     return wrapper
 
+
 def replay(method: Callable) -> None:
     """
     implement a replay function to display
@@ -53,6 +56,7 @@ def replay(method: Callable) -> None:
         input = input.decode("utf-8")
         output = output.decode("utf-8")
         print(f"{method.__qualname__}(*{input}) -> {output}")
+
 
 class Cache:
     """
@@ -78,7 +82,6 @@ class Cache:
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
-    
 
     def get(
         self,
@@ -91,7 +94,7 @@ class Cache:
         """
         value = self._redis.get(key)
         if value is None:
-                return None
+            return None
         if fn is not None:
             return fn(value)
         return value
